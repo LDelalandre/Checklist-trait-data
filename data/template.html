@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>{{TITLE}}</title>
+
+<style>
+/* ===== Body and general layout ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 30px;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 800px;
+  margin-left: 300px; /* leave space for TOC */
+}
+
+/* ===== Headings ===== */
+h1 {
+  font-weight: 600;
+  color: #222;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #444;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #555;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.subcard {
+  background: #f9fbff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0 0 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+/* ===== Labels and checkboxes ===== */
+label {
+  display: block;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+label:hover {
+  background: #f0f3ff;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* ===== Progress bar ===== */
+.progress-container {
+  background: #e6ebff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #4c6fff;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 10px 15px;
+  background: #4c6fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #3b55cc;
+}
+
+/* ===== Floating Table of Contents ===== */
+.toc {
+  position: fixed;
+  top: 30px;
+  left: 20px;
+  width: 250px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #4c6fff;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== Table of Contents ===== -->
+<div class="toc" id="toc">
+  <h3>Table of Contents</h3>
+  <ul id="toc-list">
+    <!-- TOC items will be inserted here by R -->
+  </ul>
+</div>
+
+<!-- ===== Main Checklist Container ===== -->
+<div class="container">
+  <h1>{{TITLE}}</h1>
+  
+  {{DESCRIPTION}}
+
+
+  <div class="progress-container" title="Progression des tâches cochées">
+    <div class="progress-bar" id="progress"></div>
+  </div>
+
+  {{TASKS}}
+
+  <button onclick="resetAll()">Reset</button>
+</div>
+
+<!-- ===== JavaScript ===== -->
+<script>
+const checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+function updateProgress() {
+  const total = checkboxes.length;
+  const checked = document.querySelectorAll("input[type=checkbox]:checked").length;
+  document.getElementById("progress").style.width = (checked / total) * 100 + "%";
+}
+
+checkboxes.forEach(box => {
+  box.checked = localStorage.getItem(box.id) === "true";
+
+  box.addEventListener("change", () => {
+    localStorage.setItem(box.id, box.checked);
+    updateProgress();
+  });
+});
+
+function resetAll() {
+  checkboxes.forEach(box => {
+    box.checked = false;
+    localStorage.setItem(box.id, false);
+  });
+  updateProgress();
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>

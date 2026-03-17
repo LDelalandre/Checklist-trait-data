@@ -1,0 +1,151 @@
+---
+title: "Appendix S1 - Detailed checklist"
+format: 
+  pdf:
+    colorlinks: true
+execute:
+  cache: false # true not to re-run chunks already executed
+  echo: false
+  warning: false
+  error: false
+editor: visual
+bibliography: references.bib
+---
+
+```{r, results='asis'}
+cat("\\makeatletter\\@ifpackageloaded{colortbl}{}{\\usepackage{colortbl}}\\makeatother\n")
+cat("\\captionsetup[table]{labelformat=empty}\n")
+```
+
+**Supplementary information** to the article *From FAIR to MEGaFAIR: A checklist to future-proof trait data in ecology and evolution*
+
+**Authors**: Léo Delalandre, Jules Segrestin, Karim Barkaoui, Cyrille Violle, Eric Garnier
+
+**Journal**: Ecology
+
+This file provides the full checklist associated to the article. It presents sequential actions to perform to ensure the reusability of trait data ordered along the sharing phase of the data life cycle. Each supplementary table corresponds to one MEGaFAIR principle: *Meaningful, Interoperable* (Step 1: Describe), *Findable,* and *Accessible* (Step 2, Preserve/Publish), plus one table covering Quality Controls.
+
+Each table contains six columns:
+
+-   `ID`, the unique identifier of the action to perform
+
+-   `Action`, a description of the action to perform
+
+-   `Importance`, an explanation of why the action should be performed
+
+-   `Examples`, examples from the FAIRTraits database [@garnier2025]
+
+-   `Documentation`, where each item should be recorded, using standard prefixes:
+
+    -   \[DwC\] for Darwin Core terms [@wieczorek2012], applicable to data, including contextual data, during Step 1, Describe. Fields belonging to the Plinian Core extension [@pando2024] are indicated by \[DwC - Plinian Core Extension\]. When field names could not be mapped to a standard, no prefix is given.
+
+    -   \[EML\] for Ecological Metadata Language sections [@fegraus2005], applicable for items of Step 2, Preserve/Publish.
+
+-   `Table_field`, the name of the FAIRTrait table where the information is stored (applicable to Step 1 only).
+
+```{r, results='asis'}
+cat("\\listoftables\n")
+cat("\\clearpage\n")
+```
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+checklist <- read.csv(here::here("data/checklist.csv"))
+```
+
+```{r, results='asis'}
+# Shrink margins for all tables using longtable's built-in controls
+cat("\\setlength{\\LTleft}{-1cm}\\setlength{\\LTright}{-1cm}\n")
+cat("\\setlength{\\LTpre}{2pt}\\setlength{\\LTpost}{2pt}\n")
+
+cat("\\widowpenalty=10000\n")
+cat("\\clubpenalty=10000\n")
+
+# Build a Category1 group for each data row
+checklist_labeled <- checklist |>
+  mutate(row = row_number()) |>
+  mutate(cat1_group = NA_character_)
+
+# Propagate Category1 label forward to subsequent rows
+current_cat1 <- NA
+for (i in 1:nrow(checklist_labeled)) {
+  if (checklist_labeled$Category1[i] != "" && checklist_labeled$ID[i] == "") {
+    current_cat1 <- checklist_labeled$Category1[i]
+  }
+  checklist_labeled$cat1_group[i] <- current_cat1
+}
+
+# Get unique Category1 groups (excluding NA/empty)
+cat1_groups <- checklist_labeled |>
+  filter(!is.na(cat1_group)) |>
+  pull(cat1_group) |>
+  unique()
+
+# Loop over Category1 groups, print one table each
+for (s in seq_along(cat1_groups)) {
+  
+  cat_label <- cat1_groups[s]
+  
+  # Subset: rows belonging to this Category1, excluding the Category1 title row itself
+  sub <- checklist_labeled |>
+    filter(cat1_group == cat_label, !(Category1 != "" & ID == "")) |>
+    select(-Category1, -cat1_group, -row)
+  
+  # Compute stripe index within this subtable (skip Category2 header rows)
+  data_rows <- which(sub$ID != "")
+  stripe_index <- data_rows[seq(2, length(data_rows), by = 2)]
+  
+  # Compute Category2 groups within this subtable
+  groups <- sub |>
+    mutate(row = row_number()) |>
+    filter(Category2 != "") |>
+    group_by(Category2) |>
+    summarise(start = min(row), end = max(row), .groups = "drop")
+  
+  # Remove Category2 column from display (will use pack_rows instead)
+  table_display <- sub |> select(-Category2)
+  
+  # Build table
+  tbl <- table_display |>
+    kbl(
+      booktabs  = TRUE,
+      longtable = TRUE,
+      label = NA,
+      col.names = c("ID", "Action", "Importance", "Examples", "Documentation", "Table field"),
+      caption   = paste0("Table S", s, ". ", cat_label),
+      row.names = FALSE
+    ) |>
+    kable_styling(
+      latex_options = c("repeat_header"),
+      font_size  = 8,
+    ) |>
+    row_spec(0, background = "gray!30", bold = TRUE) |>
+    column_spec(1, width = "0.5cm") |>
+    column_spec(2, width = "3cm")   |>
+    column_spec(3, width = "4.5cm") |>
+    column_spec(4, width = "3.5cm") |>
+    column_spec(5, width = "2.5cm") |>
+    column_spec(6, width = "1.5cm")
+  
+  tbl <- tbl |> row_spec(stripe_index, background = "gray!8")
+  
+  # Add Category2 group headers via pack_rows (with nopagebreak to avoid orphan headers)
+  for (i in 1:nrow(groups)) {
+    tbl <- tbl |>
+      pack_rows(groups$Category2[i], groups$start[i], groups$end[i],
+                bold = TRUE, background = "gray!30",
+                extra_latex_after = "\\nopagebreak")
+  }
+  
+  # Add alternating row stripes
+  if (length(stripe_index) > 0) {
+    tbl <- tbl |> row_spec(stripe_index, background = "gray!15")
+  }
+  
+  print(tbl)
+  cat("\\clearpage\n")  # new page after each table
+}
+```
+
+# References
