@@ -128,6 +128,18 @@ button:hover {
 .toc a:hover {
   text-decoration: underline;
 }
+
+/* ===== Print / PDF ===== */
+@media print {
+  .toc {
+    display: none;
+  }
+  .container {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
 </style>
 </head>
 

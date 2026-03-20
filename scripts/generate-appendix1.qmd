@@ -23,7 +23,7 @@ cat("\\captionsetup[table]{labelformat=empty}\n")
 
 **Journal**: Ecology
 
-This file provides the full checklist associated to the article. It presents sequential actions to perform to ensure the reusability of trait data ordered along the sharing phase of the data life cycle. Each supplementary table corresponds to one MEGaFAIR principle: *Meaningful, Interoperable* (Step 1: Describe), *Findable,* and *Accessible* (Step 2, Preserve/Publish), plus one table covering Quality Controls.
+This file provides the detailed checklist associated to the article. It presents sequential actions to perform to ensure the reusability of trait data ordered along the sharing phase of the data life cycle. Each supplementary table corresponds to one MEGaFAIR principle: *Meaningful, Interoperable* (Step 1: Describe), *Findable,* and *Accessible* (Step 2, Preserve/Publish), plus one table covering Quality Controls.
 
 Each table contains six columns:
 

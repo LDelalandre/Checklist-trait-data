@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Appendix S2 - Operational Checklist</title>
+
+<style>
+/* ===== Body and general layout ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 30px;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 800px;
+  margin-left: 300px; /* leave space for TOC */
+}
+
+/* ===== Headings ===== */
+h1 {
+  font-weight: 600;
+  color: #222;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #444;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #555;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.subcard {
+  background: #f9fbff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0 0 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+/* ===== Labels and checkboxes ===== */
+label {
+  display: block;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+label:hover {
+  background: #f0f3ff;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* ===== Progress bar ===== */
+.progress-container {
+  background: #e6ebff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #4c6fff;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 10px 15px;
+  background: #4c6fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #3b55cc;
+}
+
+/* ===== Floating Table of Contents ===== */
+.toc {
+  position: fixed;
+  top: 30px;
+  left: 20px;
+  width: 250px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #4c6fff;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Print / PDF ===== */
+@media print {
+  .toc {
+    display: none;
+  }
+  .container {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== Table of Contents ===== -->
+<div class="toc" id="toc">
+  <h3>Table of Contents</h3>
+  <ul id="toc-list">
+    <li><a href="#cat_A__MAKE_TRAIT_DATA_MEANINGFUL">A) MAKE TRAIT DATA MEANINGFUL</a></li>
+<li><a href="#cat_B__MAKE_TRAIT_DATA_INTEROPERABLE">B) MAKE TRAIT DATA INTEROPERABLE</a></li>
+<li><a href="#cat_C__MAKE_TRAIT_DATA_FINDABLE">C) MAKE TRAIT DATA FINDABLE</a></li>
+<li><a href="#cat_D__MAKE_TRAIT_DATA_ACCESSIBLE">D) MAKE TRAIT DATA ACCESSIBLE</a></li>
+<li><a href="#cat_E__PERFORM_QUALITY_CONTROLS__QCs_">E) PERFORM QUALITY CONTROLS (QCs)</a></li>
+
+  </ul>
+</div>
+
+<!-- ===== Main Checklist Container ===== -->
+<div class="container">
+  <h1>Appendix S2 - Operational Checklist</h1>
+  
+  <p style='font-style:italic; color:#555;'>
+This operational checklist follows the same structure as the detailed checklist and the article.
+It can be stored in your project folder, and allows you to tick the actions that you already performed.
+Provided you do not move the file, the ticked items will be saved, and will still be ticked when reopening the file.
+</p>
+
+
+  <div class="progress-container" title="Progression des tâches cochées">
+    <div class="progress-bar" id="progress"></div>
+  </div>
+
+  <div class="card" id="cat_A__MAKE_TRAIT_DATA_MEANINGFUL"><h2>A) MAKE TRAIT DATA MEANINGFUL</h2><div class="subcard" id="sub_A_1__Document_the_trait"><h3>A.1) Document the trait</h3><label><input type="checkbox" id="chk_A_1_1"> A.1.1 Describe a trait as a quality (Q) of an entity (E), a formalism widely used to describe the traits of organisms.</label>
+<label><input type="checkbox" id="chk_A_1_2"> A.1.2 Describe the sampling protocols (of the entity)</label>
+<label><input type="checkbox" id="chk_A_1_3"> A.1.3 Record a unique identifier for the sample (if tracked across multiple measurements).</label>
+<label><input type="checkbox" id="chk_A_1_4"> A.1.4 Describe the measurement methods (of the quality)</label>
+<label><input type="checkbox" id="chk_A_1_5"> A.1.5 Use acknowledged standards when available.</label>
+<label><input type="checkbox" id="chk_A_1_6"> A.1.6 Identify each replicate measurement</label>
+<label><input type="checkbox" id="chk_A_1_7"> A.1.7 Record data at the finest resolution possible, that is, one record per trait measurement, which can even include the within-individual or within-organ level</label>
+<label><input type="checkbox" id="chk_A_1_8"> A.1.8 Homogenize units</label>
+<label><input type="checkbox" id="chk_A_1_9"> A.1.9 Record the date and time of each samping/measurement</label>
+<label><input type="checkbox" id="chk_A_1_10"> A.1.10 Report the geolocation of each sampling/measument (if necessary)</label></div>
+<div class="subcard" id="sub_A_2__Document_the_sampled_organism"><h3>A.2) Document the sampled organism</h3><label><input type="checkbox" id="chk_A_2_1"> A.2.1 Specify the full scientific name (if identified at the species level: binomial name, including genus and species, in Latin).</label>
+<label><input type="checkbox" id="chk_A_2_2"> A.2.2 If taxon identified at the species level: indicate the name of the author(s) of the species name (authority)</label>
+<label><input type="checkbox" id="chk_A_2_3"> A.2.3 Document the taxonomic reference used [see also B.1.2]</label>
+<label><input type="checkbox" id="chk_A_2_4"> A.2.4 Provide a unique taxonomic identifier from the chosen taxonomic reference for each taxon [see also B.2.4].</label>
+<label><input type="checkbox" id="chk_A_2_5"> A.2.5 Keep the original taxon names used during data collection, if they differ from the standardized names used in the final dataset.</label>
+<label><input type="checkbox" id="chk_A_2_6"> A.2.6 Document relevant infraspecific taxonomic rank (subspecies, variety, cultivar, genotype ID, accession number…) and provide its identifier if possible</label>
+<label><input type="checkbox" id="chk_A_2_7"> A.2.7 Document relevant higher taxonomic information (e.g., family, order)</label>
+<label><input type="checkbox" id="chk_A_2_8"> A.2.8 Document any relevant information on the taxon that provides biological context.</label>
+<label><input type="checkbox" id="chk_A_2_9"> A.2.9 Document any relevant information about the state of the sampled organism that could influence trait values.</label></div>
+<div class="subcard" id="sub_A_3__Document_the_environment"><h3>A.3) Document the environment</h3><label><input type="checkbox" id="chk_A_3_1"> A.3.1 Indicate the spatial organization of the observational or experimental design, including whether the data were measured in a glasshouse, a common garden, or in the field</label>
+<label><input type="checkbox" id="chk_A_3_2"> A.3.2 Define the environmental variables reported</label>
+<label><input type="checkbox" id="chk_A_3_3"> A.3.3 Describe the sampling protocol for environmental variables</label>
+<label><input type="checkbox" id="chk_A_3_4"> A.3.4 Describe the measurement method for environmental variables</label>
+<label><input type="checkbox" id="chk_A_3_5"> A.3.5 Specify the units of the environmental variables reported</label>
+<label><input type="checkbox" id="chk_A_3_6"> A.3.6 Referer to a standard (if available)</label>
+<label><input type="checkbox" id="chk_A_3_7"> A.3.7 Indicate the spatial scale of the measurements</label>
+<label><input type="checkbox" id="chk_A_3_8"> A.3.8 Specify the origin of the environmental variables (measured locally vs. extracted from databases)</label></div>
+<div class="subcard" id="sub_A_4__Document_the_project"><h3>A.4) Document the project</h3><label><input type="checkbox" id="chk_A_4_1"> A.4.1 Identity of the origin of the measurement: experimenter(s), name of project, grants...</label>
+<label><input type="checkbox" id="chk_A_4_2"> A.4.2 Provide contacts</label>
+<label><input type="checkbox" id="chk_A_4_3"> A.4.3 Cite publications that have used the data</label></div></div>
+<div class="card" id="cat_B__MAKE_TRAIT_DATA_INTEROPERABLE"><h2>B) MAKE TRAIT DATA INTEROPERABLE</h2><div class="subcard" id="sub_B_1__Format_and_structure_the_data"><h3>B.1) Format and structure the data</h3><label><input type="checkbox" id="chk_B_1_1"> B.1.1 Store data in a non-proprietary, machine-readable format (e.g., .txt, or .csv)</label>
+<label><input type="checkbox" id="chk_B_1_2"> B.1.2 Include as much information as possible within the tables</label>
+<label><input type="checkbox" id="chk_B_1_3"> B.1.3 Choose a structure for the data</label>
+<label><input type="checkbox" id="chk_B_1_4"> B.1.4 In each table, generate a unique identifier ("primary key") for each row</label>
+<label><input type="checkbox" id="chk_B_1_5"> B.1.5 If following a relationaldatabase structure, refer to the primary key of the extensions within the core observation table</label></div>
+<div class="subcard" id="sub_B_2__Standardize_variable_names"><h3>B.2) Standardize variable names</h3><label><input type="checkbox" id="chk_B_2_1"> B.2.1 Rely on a standard to define variable/column names (if possible).</label>
+<label><input type="checkbox" id="chk_B_2_2"> B.2.2 Describe precisely the variables not found in standards (when documenting the general metadata).</label></div>
+<div class="subcard" id="sub_B_3__Standardize_variable_content"><h3>B.3) Standardize variable content</h3><label><input type="checkbox" id="chk_B_3_1"> B.3.1 Standardize trait names and methods by mapping them to persistent identifiers from community-accepted ontologies.</label>
+<label><input type="checkbox" id="chk_B_3_2"> B.3.2 Standardize taxonomic names by mapping them to persistent identifiers from a community-accepted source (cf. A.2.3)</label>
+<label><input type="checkbox" id="chk_B_3_3"> B.3.3 Standardise environmental measurements by referencing relevant ontologies or thesauri (cf. A.3.5)</label></div>
+<div class="subcard" id="sub_B_4__Ensure_reproducible_data_processing"><h3>B.4) Ensure reproducible data processing</h3><label><input type="checkbox" id="chk_B_4_1"> B.4.1 Favour algorithmic over manual restructuration</label>
+<label><input type="checkbox" id="chk_B_4_2"> B.4.2 Use a version control system</label>
+<label><input type="checkbox" id="chk_B_4_3"> B.4.3 Share the code used to restructure data</label>
+<label><input type="checkbox" id="chk_B_4_4"> B.4.4 Associate a usage license to the scripts</label></div></div>
+<div class="card" id="cat_C__MAKE_TRAIT_DATA_FINDABLE"><h2>C) MAKE TRAIT DATA FINDABLE</h2><div class="subcard" id="sub_C_1__Publish_a_metadata_file_in_a_standard_format"><h3>C.1) Publish a metadata file in a standard format</h3><label><input type="checkbox" id="chk_C_1_1"> C.1.1 Use a community-approved metadata standard</label>
+<label><input type="checkbox" id="chk_C_1_2"> C.1.2 Publish the metadata to a searchable repository or catalog.</label></div>
+<div class="subcard" id="sub_C_2__Publish_a_rich_metadata_file"><h3>C.2) Publish a rich metadata file</h3><label><input type="checkbox" id="chk_C_2_1"> C.2.1 Make a general description of the dataset (title, originators, abstract, key words)</label>
+<label><input type="checkbox" id="chk_C_2_2"> C.2.2 Describe the data content (trait and taxonomic coverage, etc.) and structure (tables, variables, relationships)</label>
+<label><input type="checkbox" id="chk_C_2_3"> C.2.3 Document the quality control procedures applied [cf. Section E]</label>
+<label><input type="checkbox" id="chk_C_2_4"> C.2.4 Provide information on accessibility (repositories, persistent identifier, license usage) [cf. Section D]</label></div>
+<div class="subcard" id="sub_C_3__Promote_the_dataset"><h3>C.3) Promote the dataset</h3><label><input type="checkbox" id="chk_C_3"> C.3 Disseminate the information about the data publication (and possibly write a data paper)</label></div></div>
+<div class="card" id="cat_D__MAKE_TRAIT_DATA_ACCESSIBLE"><h2>D) MAKE TRAIT DATA ACCESSIBLE</h2><div class="subcard" id="sub_D_1__Preserve_and_license_the_data_package"><h3>D.1) Preserve and license the data package</h3><label><input type="checkbox" id="chk_D_1_1"> D.1.1 Archive data in a long-term repository committed to FAIR practices, queriable by both humans and machines, and associate its metadata.</label>
+<label><input type="checkbox" id="chk_D_1_2"> D.1.2 Upload metadata together with the data</label>
+<label><input type="checkbox" id="chk_D_1_3"> D.1.3 Assign a persistent identifier (DOI) to the dataset.</label>
+<label><input type="checkbox" id="chk_D_1_4"> D.1.4 Specify reusability conditions with a a clear usage license</label></div>
+<div class="subcard" id="sub_D_2__Preserve_and_license_the_processing_scripts"><h3>D.2) Preserve and license the processing scripts</h3><label><input type="checkbox" id="chk_D_2"> D.2 Preserve the processing code/scripts to a repository (with a DOI and license).</label></div></div>
+<div class="card" id="cat_E__PERFORM_QUALITY_CONTROLS__QCs_"><h2>E) PERFORM QUALITY CONTROLS (QCs)</h2><div class="subcard" id="sub_E_1__QC_of_dataset_Description__step_1_"><h3>E.1) QC of dataset Description (step 1)</h3><label><input type="checkbox" id="chk_E_1_1"> E.1.1 Check data structure</label>
+<label><input type="checkbox" id="chk_E_1_2"> E.1.2 Check numeric variables for outliers and plausible ranges.</label>
+<label><input type="checkbox" id="chk_E_1_3"> E.1.3 Check units for homogeneity across the dataset.</label>
+<label><input type="checkbox" id="chk_E_1_4"> E.1.4 Check non-numeric variables (e.g., taxon names, identifiers) for misspellings and consistency.</label>
+<label><input type="checkbox" id="chk_E_1_5"> E.1.5 Ensure that URLs pointing to external references are functional</label>
+<label><input type="checkbox" id="chk_E_1_6"> E.1.6 Ensure reproducibility of the quality control and correction procedures</label></div>
+<div class="subcard" id="sub_E_2__QC_of_dataset_Publication__step_2_"><h3>E.2) QC of dataset Publication (step 2)</h3><label><input type="checkbox" id="chk_E_2_1"> E.2.1 Proofread the metadata files and control for errors.</label>
+<label><input type="checkbox" id="chk_E_2_2"> E.2.2 Verify the published data package matches the intended release, and pay particular attention to control the presence of DOIs and licenses.</label></div></div>
+
+  <button onclick="resetAll()">Reset</button>
+</div>
+
+<!-- ===== JavaScript ===== -->
+<script>
+const checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+function updateProgress() {
+  const total = checkboxes.length;
+  const checked = document.querySelectorAll("input[type=checkbox]:checked").length;
+  document.getElementById("progress").style.width = (checked / total) * 100 + "%";
+}
+
+checkboxes.forEach(box => {
+  box.checked = localStorage.getItem(box.id) === "true";
+
+  box.addEventListener("change", () => {
+    localStorage.setItem(box.id, box.checked);
+    updateProgress();
+  });
+});
+
+function resetAll() {
+  checkboxes.forEach(box => {
+    box.checked = false;
+    localStorage.setItem(box.id, false);
+  });
+  updateProgress();
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>

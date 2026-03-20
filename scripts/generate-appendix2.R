@@ -119,7 +119,13 @@ if (detailed_toc){
 template <- paste(readLines("data/template.html"), collapse = "\n")
 
 # --- 8. Insert placeholders ---
-description_text <- "<p style='font-style:italic; color:#555;'>This operational checklist follows the same structure are the detailed checklist and the article. It can be stored in your project folder, and allows you to tick the actions that you already performed. Provided you do not move the file, the ticked items will be saved, and will still be ticked when reopening the file.</p>"
+description_text <- "<p style='font-style:italic; color:#555;'>
+This operational checklist follows the same structure as the detailed checklist and the article.
+It can be stored in your project folder, and allows you to tick the actions that you already performed.
+Provided you do not move the file, the ticked items will be saved, and will still be ticked when reopening the file.
+NB: for revision, this document is presented as a pdf, but the html, interactive document is 
+available on GitHub: 
+</p>"
 
 html <- gsub("\\{\\{DESCRIPTION\\}\\}", description_text, template)
 html <- gsub("\\{\\{TITLE\\}\\}", "Appendix S2 - Operational Checklist", html)
@@ -129,7 +135,7 @@ html <- gsub("\\{\\{TASKS\\}\\}", tasks_html, html)
 html <- gsub("<!-- TOC items will be inserted here by R -->", toc_html, html)
 
 # --- 9. Write final HTML ---
-writeLines(html, "draft/operational_checklist.html")
+writeLines(html, "Appendix S2 - Operational checklist.html")
 cat("✔ checklist_operational.html generated successfully\n")
 
 # SessionInfo ####
