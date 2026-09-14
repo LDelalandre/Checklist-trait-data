@@ -1,0 +1,65 @@
+Category2,ID,Action to perform,Tier
+A.1) Document the trait,A.1.1,"Describe a trait as a quality (Q) of an entity (E), a formalism widely used to describe the traits of organisms.",Simple dataset
+A.1) Document the trait,A.1.2,Describe the sampling protocols (of the entity),Simple dataset
+A.1) Document the trait,A.1.3,Record a unique identifier for the sample (if tracked across multiple measurements).,Structured dataset for reuse
+A.1) Document the trait,A.1.4,Describe the measurement methods (of the quality),Simple dataset
+A.1) Document the trait,A.1.5,Use acknowledged standards when available.,Structured dataset for reuse
+A.1) Document the trait,A.1.6,Identify each replicate measurement,Simple dataset
+A.1) Document the trait,A.1.7,"Record data at the finest resolution possible, that is, one record per trait measurement, which can even include the within-individual or within-organ level",Simple dataset
+A.1) Document the trait,A.1.8,Homogenize units,Simple dataset
+A.1) Document the trait,A.1.9,Record the date and time of each sampling/measurement,Simple dataset
+A.1) Document the trait,A.1.10,Report the geolocation of each sampling/measurement (if necessary),Simple dataset
+A.2) Document the sampled organism,A.2.1,"Specify the full scientific name (if identified at the species level: binomial name, including genus and species, in Latin).",Simple dataset
+A.2) Document the sampled organism,A.2.2,If taxon identified at the species level: indicate the name of the author(s) of the species name (authority),Structured dataset for reuse
+A.2) Document the sampled organism,A.2.3,Document the taxonomic reference used [see also B.1.2],Structured dataset for reuse
+A.2) Document the sampled organism,A.2.4,Provide a unique taxonomic identifier from the chosen taxonomic reference for each taxon [see also B.2.4].,Collection of datasets
+A.2) Document the sampled organism,A.2.5,"Keep the original taxon names used during data collection, if they differ from the standardized names used in the final dataset.",Structured dataset for reuse
+A.2) Document the sampled organism,A.2.6,"Document relevant infraspecific taxonomic rank (subspecies, variety, cultivar, genotype ID, accession number...) and provide its identifier if possible",Structured dataset for reuse
+A.2) Document the sampled organism,A.2.7,"Document relevant higher taxonomic information (e.g., family, order)",Simple dataset
+A.2) Document the sampled organism,A.2.8,Document any relevant information on the taxon that provides biological context.,Structured dataset for reuse
+A.2) Document the sampled organism,A.2.9,Document any relevant information about the state of the sampled organism that could influence trait values.,Simple dataset
+A.3) Document the environment,A.3.1,"Indicate the spatial organization of the observational or experimental design, including whether the data were measured in a glasshouse, a common garden, or in the field",Simple dataset
+A.3) Document the environment,A.3.2,Define the environmental variables reported,Simple dataset
+A.3) Document the environment,A.3.3,Describe the sampling protocol for environmental variables,Structured dataset for reuse
+A.3) Document the environment,A.3.4,Describe the measurement method for environmental variables,Structured dataset for reuse
+A.3) Document the environment,A.3.5,Specify the units of the environmental variables reported,Simple dataset
+A.3) Document the environment,A.3.6,Refer to a standard (if available),Structured dataset for reuse
+A.3) Document the environment,A.3.7,Indicate the spatial scale of the measurements,Structured dataset for reuse
+A.3) Document the environment,A.3.8,Specify the origin of the environmental variables (measured locally vs. extracted from databases),Structured dataset for reuse
+A.4) Document the project,A.4.1,"Identity of the origin of the measurement: experimenter(s), name of project, grants...",Simple dataset
+A.4) Document the project,A.4.2,Provide contacts,Simple dataset
+A.4) Document the project,A.4.3,Cite publications that have used the data,Structured dataset for reuse
+B.1) Format and structure the data,B.1.1,"Store data in a non-proprietary, machine-readable format (e.g., .txt, or .csv)",Simple dataset
+B.1) Format and structure the data,B.1.2,Include as much information as possible within the tables,Simple dataset
+B.1) Format and structure the data,B.1.3,Choose a structure for the data,Simple dataset
+B.1) Format and structure the data,B.1.4,"In each table, generate a unique identifier (""primary key"") for each row",Structured dataset for reuse
+B.1) Format and structure the data,B.1.5,"If following a relational database structure, refer to the primary key of the extensions within the core observation table",Collection of datasets
+B.2) Standardize variable names,B.2.1,Rely on a standard to define variable/column names (if possible).,Structured dataset for reuse
+B.2) Standardize variable names,B.2.2,Describe precisely the variables not found in standards (when documenting the general metadata).,Structured dataset for reuse
+B.3) Standardize variable content,B.3.1,Standardize trait names and methods by mapping them to persistent identifiers from community-accepted ontologies.,Collection of datasets
+B.3) Standardize variable content,B.3.2,Standardize taxonomic names by mapping them to persistent identifiers from a community-accepted source (cf. A.2.3),Collection of datasets
+B.3) Standardize variable content,B.3.3,Standardise environmental measurements by referencing relevant ontologies or thesauri (cf. A.3.5),Collection of datasets
+B.4) Ensure reproducible data processing,B.4.1,Favour algorithmic over manual restructuration,Structured dataset for reuse
+B.4) Ensure reproducible data processing,B.4.2,Use a version control system,Structured dataset for reuse
+B.4) Ensure reproducible data processing,B.4.3,Share the code used to restructure data,Structured dataset for reuse
+B.4) Ensure reproducible data processing,B.4.4,Associate a usage license to the scripts,Collection of datasets
+C.1) Publish a metadata file in a standard format,C.1.1,Use a community-approved metadata standard,Structured dataset for reuse
+C.1) Publish a metadata file in a standard format,C.1.2,Publish the metadata to a searchable repository or catalog.,Simple dataset
+C.2) Publish a rich metadata file,C.2.1,"Make a general description of the dataset (title, originators, abstract, key words)",Simple dataset
+C.2) Publish a rich metadata file,C.2.2,"Describe the data content (trait and taxonomic coverage, etc.) and structure (tables, variables, relationships)",Simple dataset
+C.2) Publish a rich metadata file,C.2.3,Document the quality control procedures applied [cf. Section E],Structured dataset for reuse
+C.2) Publish a rich metadata file,C.2.4,"Provide information on accessibility (repositories, persistent identifier, license usage) [cf. Section D]",Simple dataset
+C.3) Promote the dataset,C.3,Disseminate the information about the data publication (and possibly write a data paper),Structured dataset for reuse
+D.1) Preserve and license the data package,D.1.1,"Archive data in a long-term repository committed to FAIR practices, queriable by both humans and machines, and associate its metadata.",Simple dataset
+D.1) Preserve and license the data package,D.1.2,Upload metadata together with the data,Simple dataset
+D.1) Preserve and license the data package,D.1.3,Assign a persistent identifier (DOI) to the dataset.,Simple dataset
+D.1) Preserve and license the data package,D.1.4,Specify reusability conditions with a clear usage license,Simple dataset
+D.2) Preserve and license the processing scripts,D.2,Preserve the processing code/scripts to a repository (with a DOI and license).,Structured dataset for reuse
+E.1) QC of dataset Description (step 1),E.1.1,Check data structure,Simple dataset
+E.1) QC of dataset Description (step 1),E.1.2,Check numeric variables for outliers and plausible ranges.,Simple dataset
+E.1) QC of dataset Description (step 1),E.1.3,Check units for homogeneity across the dataset.,Simple dataset
+E.1) QC of dataset Description (step 1),E.1.4,"Check non-numeric variables (e.g., taxon names, identifiers) for misspellings and consistency.",Simple dataset
+E.1) QC of dataset Description (step 1),E.1.5,Ensure that URLs pointing to external references are functional,Structured dataset for reuse
+E.1) QC of dataset Description (step 1),E.1.6,Ensure reproducibility of the quality control and correction procedures,Structured dataset for reuse
+E.2) QC of dataset Publication (step 2),E.2.1,Proofread the metadata files and control for errors.,Simple dataset
+E.2) QC of dataset Publication (step 2),E.2.2,"Verify the published data package matches the intended release, and pay particular attention to control the presence of DOIs and licenses.",Simple dataset
