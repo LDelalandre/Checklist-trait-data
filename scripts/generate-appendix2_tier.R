@@ -27,6 +27,8 @@ data <- read_csv("data/checklist.csv", col_types = cols(.default = "c")) %>%
   fill(Category1, Category2, .direction = "down")
 
 # --- 2. Filter actual checklist items, create IDs, and pre-build each row's HTML ---
+# NB: adjust the column name below (`Why performing this action is important`)
+# if your CSV header differs (e.g. has spaces instead of dots).
 tasks <- data %>%
   filter(!is.na(ID) & ID != "", !is.na(`Action to perform`) & `Action to perform` != "") %>%
   mutate(
@@ -36,13 +38,20 @@ tasks <- data %>%
     tier_id = tier_slug(Tier),
     task_html = paste0(
       '<div class="task-row tier-', tier_id, '" data-tier="', Tier, '">',
+      '<div class="task-line">',
+      '<span class="toggle-arrow" onclick="toggleImportance(this)">&#9656;</span>',
       '<label><input type="checkbox" id="', checkbox_id, '"> ',
       ID, ' ', `Action to perform`,
-      '</label></div>'
+      '</label>',
+      '</div>',
+      '<div class="task-importance">',
+      '<em>Why this matters:</em> ', `Why performing this action is important`,
+      '</div>',
+      '</div>'
     )
   )
 
-# --- 3. Build subtitle cards (group keys pulled with first() to guarantee length 1) ---
+# --- 3. Build subtitle cards ---
 subtitle_cards <- tasks %>%
   group_by(Category1, Category2, Category1_id, Category2_id) %>%
   summarise(
@@ -73,7 +82,7 @@ title_cards <- subtitle_cards %>%
 # --- 5. Collapse all title cards ---
 tasks_body_html <- paste(title_cards$title_card, collapse = "\n")
 
-# --- 5b. Tier CSS (Okabe-Ito palette, same tints as the PDF) ---
+# --- 5b. Tier CSS + expand/collapse CSS ---
 tier_style_html <- '
 <style>
 .task-row {
@@ -85,6 +94,35 @@ tier_style_html <- '
 .tier-structured { background-color: rgba(240,228,66,0.35); }
 .tier-collection { background-color: rgba(213,94,0,0.20); }
 .tier-unknown    { background-color: transparent; }
+
+.task-line {
+  display: flex;
+  align-items: flex-start;
+}
+.toggle-arrow {
+  cursor: pointer;
+  display: inline-block;
+  width: 14px;
+  margin-right: 4px;
+  transition: transform 0.15s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+.toggle-arrow.open {
+  transform: rotate(90deg);
+}
+.task-importance {
+  display: none;
+  margin: 4px 0 6px 22px;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  color: #333;
+  background: rgba(255,255,255,0.5);
+  border-left: 2px solid #999;
+}
+.task-importance.open {
+  display: block;
+}
 
 #tier-filter {
   margin-bottom: 15px;
@@ -111,7 +149,7 @@ tier_style_html <- '
 </style>
 '
 
-# --- 5c. Tier filter panel (checkboxes to show/hide tiers) ---
+# --- 5c. Tier filter panel ---
 tier_filter_html <- '
 <div id="tier-filter">
   <strong>Show tiers:&nbsp;</strong>
@@ -124,7 +162,7 @@ tier_filter_html <- '
 </div>
 '
 
-# --- 5d. Filter JS (runs after checkboxes exist in the DOM) ---
+# --- 5d. JS: tier filter + importance toggle ---
 tier_script_html <- '
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -139,6 +177,13 @@ document.addEventListener("DOMContentLoaded", function() {
   toggles.forEach(t => t.addEventListener("change", updateVisibility));
   updateVisibility();
 });
+
+function toggleImportance(el) {
+  el.classList.toggle("open");
+  var row = el.closest(".task-row");
+  var detail = row.querySelector(".task-importance");
+  detail.classList.toggle("open");
+}
 </script>
 '
 
