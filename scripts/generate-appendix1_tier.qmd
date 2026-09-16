@@ -1,5 +1,5 @@
 ---
-title: "Appendix S1 - Detailed checklist"
+title: "Appendix S2 - Detailed checklist"
 format: 
   pdf:
     colorlinks: true
@@ -54,6 +54,8 @@ Each checklist item is assigned to one of three cumulative tiers, reflecting inc
 
 Tiers are cumulative: an item assigned to tier 2 or 3 presupposes that all tier 1 (and, for tier 3, tier 2) items have also been completed. We recommend that researchers new to data sharing focus on tier 1 items, and progressively work toward tiers 2 and 3 as their dataset's expected scope of reuse broadens.
 
+
+<!-- ![tier](draft/figures/tier_decision_ladder.png) -->
 
 
 ```{r, results='asis'}

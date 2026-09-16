@@ -260,7 +260,7 @@ target='_blank'>https://htmlpreview.github.io/?https://github.com/Ldelalandre/Ch
 </p>"
 
 html <- gsub("\\{\\{DESCRIPTION\\}\\}", description_text, template)
-html <- gsub("\\{\\{TITLE\\}\\}", "Appendix S2 - Operational Checklist", html)
+html <- gsub("\\{\\{TITLE\\}\\}", "Appendix S1 - Operational Checklist", html)
 html <- gsub("\\{\\{TASKS\\}\\}", tasks_html, html)
 html <- gsub("<!-- TOC items will be inserted here by R -->", toc_html, html)
 
