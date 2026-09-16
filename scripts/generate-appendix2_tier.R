@@ -12,7 +12,7 @@ tier_slug <- function(x) {
   case_when(
     x == "Simple dataset"               ~ "simple",
     x == "Structured dataset for reuse" ~ "structured",
-    x == "Collection of datasets"       ~ "collection",
+    x == "Structured dataset for automated integration"       ~ "collection",
     TRUE                                 ~ "unknown"
   )
 }
@@ -157,8 +157,8 @@ tier_filter_html <- '
     <span class="legend-swatch swatch-simple"></span>Simple dataset</label>
   <label><input type="checkbox" class="tier-toggle" value="Structured dataset for reuse" checked>
     <span class="legend-swatch swatch-structured"></span>Structured dataset for reuse</label>
-  <label><input type="checkbox" class="tier-toggle" value="Collection of datasets" checked>
-    <span class="legend-swatch swatch-collection"></span>Collection of datasets</label>
+  <label><input type="checkbox" class="tier-toggle" value="Structured dataset for automated integration" checked>
+    <span class="legend-swatch swatch-collection"></span>Structured dataset for automated integration</label>
 </div>
 '
 

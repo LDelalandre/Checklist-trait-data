@@ -12,12 +12,12 @@ A.1) Document the trait,,,
 ,A.1.10,Report the geolocation of each sampling/measurement (if necessary),Simple dataset
 A.2) Document the sampled organism,,,
 ,A.2.1,"Specify the full scientific name (if identified at the species level: binomial name, including genus and species, in Latin).",Simple dataset
-,A.2.2,If taxon identified at the species level: indicate the name of the author(s) of the species name (authority),Collection of datasets
-,A.2.3,Document the taxonomic reference used [see also B.1.2],Structured dataset for reuse
+,A.2.2,If taxon identified at the species level: indicate the name of the author(s) of the species name (authority),Simple dataset
+,A.2.3,Document the taxonomic reference used [see also B.1.2],Simple dataset
 ,A.2.4,Provide a unique taxonomic identifier from the chosen taxonomic reference for each taxon [see also B.2.4].,Collection of datasets
-,A.2.5,"Keep the original taxon names used during data collection, if they differ from the standardized names used in the final dataset.",Structured dataset for reuse
+,A.2.5,"Keep the original taxon names used during data collection, if they differ from the standardized names used in the final dataset.",Simple dataset
 ,A.2.6,"Document relevant infraspecific taxonomic rank (subspecies, variety, cultivar, genotype ID, accession number...) and provide its identifier if possible",Structured dataset for reuse
-,A.2.7,"Document relevant higher taxonomic information (e.g., family, order)",Simple dataset
+,A.2.7,"Document relevant higher taxonomic information (e.g., family, order)",Structured dataset for reuse
 ,A.2.8,Document any relevant information on the taxon that provides biological context.,Structured dataset for reuse
 ,A.2.9,Document any relevant information about the state of the sampled organism that could influence trait values.,Simple dataset
 A.3) Document the environment,,,
@@ -36,13 +36,13 @@ A.4) Document the project,,,
 ,,,
 B.1) Format and structure the data,,,
 ,B.1.1,"Store data in a non-proprietary, machine-readable format (e.g., .txt, or .csv)",Simple dataset
-,B.1.2,Include as much information as possible within the tables,Simple dataset
+,B.1.2,Include as much information as possible within the tables,Structured dataset for reuse
 ,B.1.3,Choose a structure for the data,Simple dataset
 ,B.1.4,"In each table, generate a unique identifier (""primary key"") for each row",Structured dataset for reuse
 ,B.1.5,"If following a relational database structure, refer to the primary key of the extensions within the core observation table",Collection of datasets
 B.2) Standardize variable names,,,
 ,B.2.1,Rely on a standard to define variable/column names (if possible).,Collection of datasets
-,B.2.2,Describe precisely the variables not found in standards (when documenting the general metadata).,Structured dataset for reuse
+,B.2.2,Describe precisely the variables not found in standards (when documenting the general metadata).,Collection of datasets
 B.3) Standardize variable content,,,
 ,B.3.1,Standardize trait names and methods by mapping them to persistent identifiers from community-accepted ontologies.,Collection of datasets
 ,B.3.2,Standardize taxonomic names by mapping them to persistent identifiers from a community-accepted source (cf. A.2.3),Collection of datasets

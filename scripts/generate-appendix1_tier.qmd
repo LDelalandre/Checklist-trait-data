@@ -43,6 +43,19 @@ Each table contains six columns:
 
 -   `Table_field`, the name of the FAIRTrait table where the information is stored (applicable to Step 1 only).
 
+Each checklist item is assigned to one of three cumulative tiers, reflecting increasing scope of intended data reuse: 
+
+
+- 1) "simple dataset" (green), sufficient for a dataset shared in isolation and intended for human interpretation, typically alongside its original publication; 
+
+- 2) "dataset structured for reuse" (yellow), for datasets expected to be discovered and reused by researchers outside the original project; and 
+
+- 3) "dataset structured for automated integration" (orange), required when a dataset is intended to be merged with other, independently produced sources.
+
+Tiers are cumulative: an item assigned to tier 2 or 3 presupposes that all tier 1 (and, for tier 3, tier 2) items have also been completed. We recommend that researchers new to data sharing focus on tier 1 items, and progressively work toward tiers 2 and 3 as their dataset's expected scope of reuse broadens.
+
+
+
 ```{r, results='asis'}
 cat("\\listoftables\n")
 cat("\\clearpage\n")
@@ -95,7 +108,7 @@ cat1_groups <- checklist_labeled |>
 tier_colors <- c(
   "Simple dataset"                = "OkabeGreen!25",
   "Structured dataset for reuse"  = "OkabeYellow!35",
-  "Collection of datasets"        = "OkabeVermillion!20"
+  "Structured dataset for automated integration"        = "OkabeVermillion!20"
 )
 
 # Loop over Category1 groups, print one table each
@@ -128,7 +141,7 @@ for (s in seq_along(cat1_groups)) {
       longtable = TRUE,
       label = NA,
       col.names = c("ID", "Action", "Importance", "Examples", "Documentation", "Table field"),
-      caption   = paste0("Table S", s, ". ", cat_label),
+      caption   = paste0("Table S2.", s, ". ", cat_label),
       row.names = FALSE
     ) |>
     kable_styling(
